@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doongi 둥이 — Virtual Pet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+<meta name="theme-color" content="#3f9b4f">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">🐾</div>
+    <div>
+      <h1>Doongi <span class="ko">둥이</span></h1>
+      <p id="moodline">your fluffy best friend</p>
+    </div>
+    <div class="lvl"><small>LEVEL</small><b id="lv">1</b></div>
+  </header>
+  <div class="xp-label"><span id="xptext">0 / 65 XP</span><span id="nextUnlock"></span></div>
+  <div class="xp"><i id="xpbar" style="width:0"></i></div>
+
+  <main class="layout">
+  <section class="left">
+  <div class="stage" id="stage">
+    <div class="wall"></div>
+    <div class="deco">
+      <div class="window"><div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="stars">✦ ✧ ✦ ✧</div></div>
+      <div class="rod"></div><div class="curtain l"></div><div class="curtain r"></div>
+      <div class="frame"><img id="framePhoto" alt="Doongi"></div>
+      <div class="clock"><i id="hh" style="height:28%"></i><i id="mm" style="height:40%"></i></div>
+      
+      
+    </div>
+    <div class="rug"></div>
+    <div class="furn">
+      <svg class="dresser" viewBox="0 0 100 140">
+        <path d="M36 52 L64 52 L72 30 L28 30Z" fill="#5cb85c"/><path d="M36 52 L64 52" stroke="#3f9b4f" stroke-width="3"/>
+        <rect x="47" y="52" width="6" height="16" fill="#fff"/><ellipse cx="50" cy="70" rx="13" ry="4" fill="#ff8a3d"/>
+        <rect x="4" y="72" width="92" height="9" rx="3" fill="#9a6a44"/>
+        <rect x="9" y="81" width="82" height="50" fill="#b98159"/>
+        <rect x="14" y="85" width="72" height="13" rx="2" fill="#c99168"/><rect x="14" y="101" width="72" height="13" rx="2" fill="#c99168"/><rect x="14" y="117" width="72" height="11" rx="2" fill="#c99168"/>
+        <circle cx="50" cy="91.5" r="2.6" fill="#ff8a3d"/><circle cx="50" cy="107.5" r="2.6" fill="#ff8a3d"/><circle cx="50" cy="122.5" r="2.6" fill="#ff8a3d"/>
+        <rect x="11" y="131" width="6" height="8" fill="#8a5c3a"/><rect x="83" y="131" width="6" height="8" fill="#8a5c3a"/>
+      </svg>
+      <svg class="bowl" viewBox="0 0 100 52">
+        <ellipse cx="50" cy="47" rx="40" ry="5" fill="rgba(0,0,0,.12)"/>
+        <path d="M12 22 L22 46 L78 46 L88 22Z" fill="#ff8a3d"/>
+        <ellipse cx="50" cy="22" rx="38" ry="9" fill="#e5681a"/>
+        <ellipse cx="50" cy="23" rx="31" ry="6" fill="#c9561a"/>
+        <g id="bowlFood" style="opacity:0;transform-box:fill-box;transform-origin:50% 100%;transition:opacity .4s,transform .4s"><circle cx="30" cy="22" r="5" fill="#a0612d"/><circle cx="40" cy="19" r="5" fill="#b8733a"/><circle cx="50" cy="17" r="5" fill="#a0612d"/><circle cx="60" cy="19" r="5" fill="#b8733a"/><circle cx="70" cy="22" r="5" fill="#a0612d"/><circle cx="36" cy="25" r="5" fill="#8f5426"/><circle cx="46" cy="23" r="5" fill="#c07b40"/><circle cx="56" cy="23" r="5" fill="#8f5426"/><circle cx="65" cy="25" r="5" fill="#c07b40"/><circle cx="45" cy="13" r="5" fill="#b8733a"/><circle cx="55" cy="12" r="5" fill="#a0612d"/></g>
+        <text x="50" y="40" text-anchor="middle" font-family="Baloo 2" font-weight="800" font-size="11" fill="#fff" letter-spacing="1">DOONGI</text>
+      </svg>
+    </div>
+        <div class="bed"></div>
+
+    <svg id="dogsvg" viewBox="0 0 300 300" aria-label="Doongi the dog. Tap to pet.">
+      <defs>
+        <g id="bodyShape">
+          <ellipse cx="150" cy="210" rx="74" ry="62"/>
+          <circle cx="85.3" cy="190.3" r="13"/><circle cx="94.0" cy="176.5" r="13"/><circle cx="106.8" cy="165.1" r="13"/><circle cx="122.7" cy="157.1" r="13"/><circle cx="140.7" cy="152.9" r="13"/><circle cx="159.3" cy="152.9" r="13"/><circle cx="177.3" cy="157.1" r="13"/><circle cx="193.2" cy="165.1" r="13"/><circle cx="206.0" cy="176.5" r="13"/><circle cx="214.7" cy="190.3" r="13"/><circle cx="98" cy="232" r="30"/><circle cx="202" cy="232" r="30"/>
+          <ellipse cx="96" cy="266" rx="30" ry="15"/><ellipse cx="204" cy="266" rx="30" ry="15"/>
+        </g>
+        <g id="headShape">
+          <ellipse cx="150" cy="114" rx="72" ry="62"/><circle cx="217.0" cy="114.0" r="14"/><circle cx="214.2" cy="130.2" r="14"/><circle cx="206.3" cy="145.2" r="14"/><circle cx="193.8" cy="157.6" r="14"/><circle cx="177.8" cy="166.4" r="14"/><circle cx="159.5" cy="171.1" r="14"/><circle cx="140.5" cy="171.1" r="14"/><circle cx="122.2" cy="166.4" r="14"/><circle cx="106.2" cy="157.6" r="14"/><circle cx="93.7" cy="145.2" r="14"/><circle cx="85.8" cy="130.2" r="14"/><circle cx="83.0" cy="114.0" r="14"/><circle cx="85.8" cy="97.8" r="14"/><circle cx="93.7" cy="82.8" r="14"/><circle cx="106.2" cy="70.4" r="14"/><circle cx="122.2" cy="61.6" r="14"/><circle cx="140.5" cy="56.9" r="14"/><circle cx="159.5" cy="56.9" r="14"/><circle cx="177.8" cy="61.6" r="14"/><circle cx="193.8" cy="70.4" r="14"/><circle cx="206.3" cy="82.8" r="14"/><circle cx="214.2" cy="97.8" r="14"/>
+        </g>
+        <g id="legShape"><rect x="-16" y="0" width="32" height="70" rx="16"/><ellipse cx="0" cy="68" rx="20" ry="12"/></g>
+        <pattern id="stripes" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="10" fill="#3f9b4f"/><rect y="10" width="20" height="10" fill="#ff8a3d"/></pattern>
+      </defs>
+      <g id="dog" class="svgpart">
+       <g id="breath" class="svgpart">
+        <!-- cape (behind) -->
+        <g class="wear" data-w="cape"><path d="M88 168 Q150 150 212 168 L238 285 Q150 300 62 285 Z" fill="#3f9b4f"/><path d="M150 230 l8 16 18 2-13 12 4 18-17-9-17 9 4-18-13-12 18-2z" fill="#ff8a3d"/></g>
+        <!-- tail -->
+        <g id="tail" class="svgpart">
+          <path d="M204 200 Q246 196 246 160 Q245 132 220 136" fill="none" stroke="#e5ddcd" stroke-width="26" stroke-linecap="round"/>
+          <path d="M204 200 Q246 196 246 160 Q245 132 220 136" fill="none" stroke="#fffdf8" stroke-width="20" stroke-linecap="round"/>
+        </g>
+        <!-- body -->
+        <use href="#bodyShape" fill="#fffdf8" stroke="#e5ddcd" stroke-width="6"/>
+        <use href="#bodyShape" fill="#fffdf8"/>
+        <ellipse cx="150" cy="182" rx="50" ry="40" fill="#ffffff"/>
+        <g fill="none" stroke="#d6cdbb" stroke-width="2.5" stroke-linecap="round"><path d="M84 270v-6M94 272v-7M206 272v-7M216 270v-6"/></g>
+        <!-- torso clothes -->
+        <g class="wear" data-w="hanbok">
+          <path d="M84 196 Q150 150 216 196 Q224 250 196 270 L104 270 Q76 250 84 196Z" fill="#4fae5a"/>
+          <path d="M112 176 L168 250" stroke="#fffdf8" stroke-width="12" stroke-linecap="round"/>
+          <path d="M112 176 L168 250" stroke="#ff8a3d" stroke-width="5" stroke-linecap="round"/>
+          <path d="M168 214 q-24 6 -30 28 M168 214 q16 14 6 44" stroke="#ff8a3d" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <circle cx="168" cy="214" r="6" fill="#e5681a"/>
+        </g>
+        <g class="wear" data-w="hoodie">
+          <path d="M84 196 Q150 150 216 196 Q224 250 196 270 L104 270 Q76 250 84 196Z" fill="#ff8a3d"/>
+          <path d="M118 242 h64 v22 h-64z" fill="#e5681a" rx="8"/>
+          <text x="150" y="234" text-anchor="middle" font-family="Gaegu" font-weight="700" font-size="24" fill="#fff">둥이</text>
+          
+        </g>
+        <g class="wear" data-w="tee">
+          <path d="M84 196 Q150 150 216 196 Q224 250 196 270 L104 270 Q76 250 84 196Z" fill="url(#stripes)"/>
+          <path d="M84 196 Q150 150 216 196" stroke="#2c7a3b" stroke-width="6" fill="none"/>
+        </g>
+        <!-- front legs -->
+        <g id="legL" class="svgpart" transform-origin="128 200">
+          <g transform="translate(128 200)"><use href="#legShape" fill="#fffdf8" stroke="#e5ddcd" stroke-width="5"/><use href="#legShape" fill="#fffdf8"/>
+          <path d="M-7 72v-6M0 74v-7M7 72v-6" stroke="#d6cdbb" stroke-width="2.5" stroke-linecap="round"/></g>
+        </g>
+        <g id="legR" class="svgpart">
+          <g transform="translate(172 200)"><use href="#legShape" fill="#fffdf8" stroke="#e5ddcd" stroke-width="5"/><use href="#legShape" fill="#fffdf8"/>
+          <path d="M-7 72v-6M0 74v-7M7 72v-6" stroke="#d6cdbb" stroke-width="2.5" stroke-linecap="round"/></g>
+        </g>
+        <!-- neck clothes -->
+        <g class="wear" data-w="bandana">
+          <path d="M100 176 Q150 198 200 176 L150 240 Z" fill="#3f9b4f"/>
+          <g fill="#fff"><circle cx="150" cy="222" r="3.5"/><circle cx="140" cy="208" r="3"/><circle cx="160" cy="208" r="3"/><circle cx="150" cy="200" r="3"/></g>
+        </g>
+        <g class="wear" data-w="bowtie">
+          <path d="M150 196 L122 182 L122 210Z M150 196 L178 182 L178 210Z" fill="#ff8a3d" stroke="#e5681a" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="150" cy="196" r="8" fill="#e5681a"/><circle cx="133" cy="190" r="2.5" fill="#fff"/><circle cx="167" cy="202" r="2.5" fill="#fff"/>
+        </g>
+        <!-- head -->
+        <g id="head" class="svgpart">
+          <path d="M80 92 Q80 30 104 18 Q124 32 140 62 Z" fill="#fffdf8" stroke="#e5ddcd" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M220 92 Q220 30 196 18 Q176 32 160 62 Z" fill="#fffdf8" stroke="#e5ddcd" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M90 80 Q91 42 104 30 Q118 42 128 62 Z" fill="#f4b1ba"/><path d="M210 80 Q209 42 196 30 Q182 42 172 62 Z" fill="#f4b1ba"/>
+          <use href="#headShape" fill="#fffdf8" stroke="#e5ddcd" stroke-width="6"/>
+          <use href="#headShape" fill="#fffdf8"/>
+          <ellipse cx="150" cy="146" rx="26" ry="18" fill="#ffffff"/>
+          
+          <g id="eyesOpen"><circle cx="119" cy="119" r="12.5" fill="#3b2b2b"/><circle cx="181" cy="119" r="12.5" fill="#3b2b2b"/><circle cx="119" cy="119" r="10.5" fill="#0f0d0d"/><circle cx="181" cy="119" r="10.5" fill="#0f0d0d"/><circle cx="123" cy="115" r="3.6" fill="#fff"/><circle cx="185" cy="115" r="3.6" fill="#fff"/><circle cx="115.5" cy="123" r="1.3" fill="#fff" opacity=".7"/><circle cx="177.5" cy="123" r="1.3" fill="#fff" opacity=".7"/></g>
+          <g id="eyesHappy" display="none" fill="none" stroke="#1d1d1d" stroke-width="4" stroke-linecap="round"><path d="M109 123 Q119 110 129 123"/><path d="M171 123 Q181 110 191 123"/></g>
+          <g id="eyesSleep" display="none" fill="none" stroke="#1d1d1d" stroke-width="4" stroke-linecap="round"><path d="M109 118 Q119 127 129 118"/><path d="M171 118 Q181 127 191 118"/></g>
+          <g id="eyesX" display="none" stroke="#1d1d1d" stroke-width="4" stroke-linecap="round"><path d="M112 112 l14 14 M126 112 l-14 14"/><path d="M174 112 l14 14 M188 112 l-14 14"/></g>
+          <path d="M135 136 Q150 129 165 136 Q167 147 150 153 Q133 147 135 136Z" fill="#2a1f1f"/><ellipse cx="144" cy="136" rx="5" ry="2.5" fill="#6a5a5a"/>
+          <path d="M150 153 v4 M139 159 Q145 163 150 157 Q155 163 161 159" fill="none" stroke="#2a2020" stroke-width="3" stroke-linecap="round"/>
+          <path id="tongue" d="M145 160 Q150 171 155 160 Z" fill="#f4849c" stroke="#e46a86" stroke-width="1.2"/>
+          <ellipse id="mouthO" display="none" cx="150" cy="163" rx="6" ry="8" fill="#3a1f24"/>
+          <!-- head wear -->
+          <g class="wear" data-w="santa"><path d="M96 66 Q112 2 168 8 Q206 16 226 50 Q204 40 200 66 Z" fill="#e23b3b"/><path d="M150 12 Q190 18 210 40" stroke="#c52c2c" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="88" y="56" width="124" height="26" rx="13" fill="#fff" stroke="#eee6da" stroke-width="2"/><circle cx="228" cy="52" r="13" fill="#fff" stroke="#eee6da" stroke-width="2"/></g>
+          <g class="wear" data-w="bow"><g transform="rotate(18 200 58)"><path d="M200 58 Q176 34 172 58 Q176 82 200 58Z" fill="#ff8a3d" stroke="#e5681a" stroke-width="2.5" stroke-linejoin="round"/><path d="M200 58 Q224 34 228 58 Q224 82 200 58Z" fill="#ff8a3d" stroke="#e5681a" stroke-width="2.5" stroke-linejoin="round"/><path d="M196 62 l-8 18 M204 62 l8 18" stroke="#ff8a3d" stroke-width="6" stroke-linecap="round"/><circle cx="200" cy="58" r="7" fill="#e5681a"/><circle cx="183" cy="52" r="2.5" fill="#fff" opacity=".8"/></g></g>
+          <g class="wear" data-w="beanie"><path d="M100 84 Q102 34 150 32 Q198 34 200 84 Q150 66 100 84Z" fill="#ff8a3d"/><path d="M96 86 Q150 62 204 86 L202 98 Q150 76 98 98Z" fill="#e5681a"/><path d="M120 50 v26 M150 40 v28 M180 50 v26" stroke="#ffa868" stroke-width="5" stroke-linecap="round"/><circle cx="150" cy="30" r="12" fill="#fff4e6"/></g>
+          <g class="wear" data-w="frog"><path d="M96 90 Q96 36 150 36 Q204 36 204 90 Q150 74 96 90Z" fill="#5cb85c"/><circle cx="122" cy="40" r="15" fill="#5cb85c"/><circle cx="178" cy="40" r="15" fill="#5cb85c"/><circle cx="122" cy="38" r="9" fill="#fff"/><circle cx="178" cy="38" r="9" fill="#fff"/><circle cx="123" cy="39" r="4.5" fill="#1d1d1d"/><circle cx="177" cy="39" r="4.5" fill="#1d1d1d"/><path d="M134 60 Q150 70 166 60" stroke="#2c7a3b" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+          <g class="wear" data-w="party"><path d="M128 64 L152 4 L174 64Z" fill="#3f9b4f"/><circle cx="142" cy="46" r="4" fill="#ff8a3d"/><circle cx="160" cy="34" r="4" fill="#ffd24d"/><circle cx="156" cy="54" r="4" fill="#fff"/><circle cx="152" cy="4" r="8" fill="#ff8a3d"/></g>
+          <g class="wear" data-w="crown"><path d="M116 64 L114 30 L134 48 L150 24 L166 48 L186 30 L184 64 Q150 56 116 64Z" fill="#ffc83d" stroke="#e0a21b" stroke-width="3" stroke-linejoin="round"/><circle cx="150" cy="50" r="5" fill="#ff8a3d"/><circle cx="130" cy="56" r="4" fill="#3f9b4f"/><circle cx="170" cy="56" r="4" fill="#3f9b4f"/></g>
+          <g class="wear" data-w="flower"><g transform="translate(196 74)"><circle cx="0" cy="-11" r="9" fill="#ff8a3d"/><circle cx="10" cy="-3" r="9" fill="#ff8a3d"/><circle cx="6" cy="9" r="9" fill="#ff8a3d"/><circle cx="-6" cy="9" r="9" fill="#ff8a3d"/><circle cx="-10" cy="-3" r="9" fill="#ff8a3d"/><circle r="6" fill="#ffd24d"/></g><path d="M186 88 q-8 6 -18 2" stroke="#3f9b4f" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+          <g class="wear" data-w="shades"><rect x="99" y="107" width="40" height="24" rx="10" fill="#1f2a22"/><rect x="161" y="107" width="40" height="24" rx="10" fill="#1f2a22"/><path d="M139 115 h22" stroke="#1f2a22" stroke-width="4"/><path d="M105 113 l8 -2 M167 113 l8 -2" stroke="#7fd08a" stroke-width="3" stroke-linecap="round"/></g>
+        </g>
+       </g>
+      </g>
+    </svg>
+    <div class="bubble" id="bubble"></div>
+  </div>
+  </section>
+  <section class="right">
+
+  <div class="stats">
+    <div class="stat" id="st-full"><div class="t"><span>🍖 Tummy</span><span id="v-full"></span></div><div class="bar"><i id="b-full"></i></div></div>
+    <div class="stat" id="st-happy"><div class="t"><span>💛 Happy</span><span id="v-happy"></span></div><div class="bar"><i id="b-happy"></i></div></div>
+    <div class="stat" id="st-energy"><div class="t"><span>⚡ Energy</span><span id="v-energy"></span></div><div class="bar"><i id="b-energy"></i></div></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn o" id="petBtn">🤚 Pet Doongi</button>
+    <button class="btn" id="sleepBtn">💤 Nap time</button>
+  </div>
+
+  <div class="tabs" style="margin-top:14px">
+    <button data-tab="tricks" class="on">✨ Tricks</button>
+    <button data-tab="snacks">🥣 Food</button>
+    <button data-tab="closet">👕 Closet</button>
+    <button data-tab="memories">📸 Memories</button>
+  </div>
+  <div class="panel on" id="p-tricks"><div class="grid" id="trickGrid"></div>
+    <div class="howto"><b>How to play:</b> pet Doongi (tap or stroke him!), feed him kibble, dress him up and practise 앉아, 손 and 빵. Tricks use energy — let him nap when he's sleepy.</div>
+  </div>
+  <div class="panel" id="p-snacks"><div class="grid" id="snackGrid"></div></div>
+  <div class="panel" id="p-closet">
+    <div class="sec">🎀 Accessories</div><div class="grid" id="headGrid"></div>
+    <div class="grid" id="bodyGrid" hidden></div>
+  </div>
+  <div class="panel" id="p-memories">
+    <div class="photos" id="photos"></div>
+    <p class="note">The real Doongi 🤍 Tap a photo to see it big or put it in the frame on his wall. You can also tap the frame to flip through photos.</p>
+  </div>
+
+  </section>
+  </main>
+  <footer>for when you miss Doongi - jaja<br><button id="resetBtn">reset progress</button></footer>
+</div>
+<div class="toast" id="toast"></div>
+<div class="lightbox" id="lightbox"><div class="lbwrap"><img id="lbimg" alt="Doongi"><div class="lbbtns"><button class="btn o" id="toFrame">🖼️ Put in frame</button><button class="btn" id="lbClose">Close</button></div></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
